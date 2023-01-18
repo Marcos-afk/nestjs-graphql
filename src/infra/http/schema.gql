@@ -14,12 +14,17 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+input FindUserByIdDto {
+  id: String!
+}
+
 type Mutation {
   create(createUserDto: CreateUserDto!): User!
 }
 
 type Query {
   find: [User!]!
+  findById(findUserByIdDto: FindUserByIdDto!): User!
 }
 
 type User {

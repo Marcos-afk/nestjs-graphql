@@ -7,6 +7,7 @@ import { UserResolver } from './resolvers/UserResolver';
 import { join } from 'path';
 import { FindAllUsersUseCase } from '@application/useCases/findAllUsers/FindAllUsersUseCase';
 import { ProviderModule } from '@infra/providers/providers.module';
+import { FindUserByIdUseCase } from '@application/useCases/findUserById/FindUserByIdUseCase';
 
 @Module({
   imports: [
@@ -18,6 +19,11 @@ import { ProviderModule } from '@infra/providers/providers.module';
     }),
     ProviderModule,
   ],
-  providers: [CreateUserUseCase, FindAllUsersUseCase, UserResolver],
+  providers: [
+    CreateUserUseCase,
+    FindAllUsersUseCase,
+    FindUserByIdUseCase,
+    UserResolver,
+  ],
 })
 export class HttpModule {}
