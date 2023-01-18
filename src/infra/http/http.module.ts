@@ -6,6 +6,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { UserResolver } from './resolvers/UserResolver';
 import { join } from 'path';
 import { FindAllUsersUseCase } from '@application/useCases/findAllUsers/FindAllUsersUseCase';
+import { ProviderModule } from '@infra/providers/providers.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { FindAllUsersUseCase } from '@application/useCases/findAllUsers/FindAllU
       autoSchemaFile: join(process.cwd(), 'src/infra/http/schema.gql'),
       sortSchema: true,
     }),
+    ProviderModule,
   ],
   providers: [CreateUserUseCase, FindAllUsersUseCase, UserResolver],
 })
