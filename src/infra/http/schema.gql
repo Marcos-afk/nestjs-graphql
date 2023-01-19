@@ -3,7 +3,6 @@
 # ------------------------------------------------------
 
 input CreateUserDto {
-  confirm_password: String!
   email: String!
   name: String!
   password: String!
@@ -30,7 +29,6 @@ type Query {
 }
 
 input UpdateUserDto {
-  confirm_password: String
   email: String
   name: String
   password: String

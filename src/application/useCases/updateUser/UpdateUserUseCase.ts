@@ -16,7 +16,7 @@ export class UpdateUserUseCase {
 
   async execute(
     { id }: FindUserByIdDto,
-    { name, email, password, confirm_password }: UpdateUserDto,
+    { name, email, password }: UpdateUserDto,
   ) {
     const user = await this.userRepository.findById(id);
     if (!user) {
@@ -31,10 +31,6 @@ export class UpdateUserUseCase {
     }
 
     if (password) {
-      if (password !== confirm_password) {
-        throw new BadRequestError('Senhas não conferem');
-      }
-
       const passwordCompared = await this.hashProvider.compare(
         password,
         user.password,

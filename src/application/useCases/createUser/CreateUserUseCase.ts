@@ -12,14 +12,10 @@ export class CreateUserUseCase {
     private readonly hashProvider: HashProviderProps,
   ) {}
 
-  async execute({ name, email, password, confirm_password }: CreateUserDto) {
+  async execute({ name, email, password }: CreateUserDto) {
     const emailAlreadyExists = await this.userRepository.findByEmail(email);
     if (emailAlreadyExists) {
       throw new BadRequestError('Email inválido');
-    }
-
-    if (password !== confirm_password) {
-      throw new BadRequestError('Senhas não conferem');
     }
 
     const hashPassword = await this.hashProvider.hash(password);
@@ -27,7 +23,6 @@ export class CreateUserUseCase {
       name,
       email,
       password: hashPassword,
-      confirm_password,
     });
 
     return UserMapper.toDto(user);

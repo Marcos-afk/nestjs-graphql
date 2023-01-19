@@ -15,8 +15,4 @@ export class UpdateUserDto {
   @IsString({ message: 'Campo senha deve ser uma string' })
   @MinLength(8, { message: 'Campo senha deve ter no mínimo 8 caracteres' })
   readonly password?: string;
-
-  @IsOptional()
-  @IsString({ message: 'Campo confirmação de senha deve ser uma string' })
-  readonly confirm_password?: string;
 }
