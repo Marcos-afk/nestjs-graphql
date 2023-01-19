@@ -8,6 +8,7 @@ import { join } from 'path';
 import { FindAllUsersUseCase } from '@application/useCases/findAllUsers/FindAllUsersUseCase';
 import { ProviderModule } from '@infra/providers/providers.module';
 import { FindUserByIdUseCase } from '@application/useCases/findUserById/FindUserByIdUseCase';
+import { UpdateUserUseCase } from '@application/useCases/updateUser/UpdateUserUseCase';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { FindUserByIdUseCase } from '@application/useCases/findUserById/FindUser
     CreateUserUseCase,
     FindAllUsersUseCase,
     FindUserByIdUseCase,
+    UpdateUserUseCase,
     UserResolver,
   ],
 })

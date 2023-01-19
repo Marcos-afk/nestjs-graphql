@@ -29,4 +29,14 @@ export class TypeormUsersRepository implements UserRepository {
     await this.usersRepository.save(user);
     return user;
   }
+
+  async update(user: User): Promise<User> {
+    await this.usersRepository.save(user);
+    return user;
+  }
+
+  async remove(user: User): Promise<void> {
+    await this.usersRepository.remove(user);
+    return;
+  }
 }
