@@ -1,16 +1,16 @@
+import { FakeHashProvider } from '@application/fakes/fake-hash.provider';
 import { UserRepositoryInMemory } from '@application/in-memory/user.repository-in-memory';
 import { BadRequestError } from '@common/errors/types/bad-request-error';
-import { HashProvider } from '@infra/providers/HashProvider/hash.provider';
 import { CreateUserUseCase } from './CreateUserUseCase';
 
 let userRepositoryInMemory: UserRepositoryInMemory;
 let createUserUseCase: CreateUserUseCase;
-let hashProvider: HashProvider;
+let hashProvider: FakeHashProvider;
 
 describe('Create user use case', () => {
   beforeEach(() => {
     userRepositoryInMemory = new UserRepositoryInMemory();
-    hashProvider = new HashProvider();
+    hashProvider = new FakeHashProvider();
     createUserUseCase = new CreateUserUseCase(
       userRepositoryInMemory,
       hashProvider,
