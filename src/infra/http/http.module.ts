@@ -9,6 +9,7 @@ import { FindAllUsersUseCase } from '@application/useCases/findAllUsers/FindAllU
 import { ProviderModule } from '@infra/providers/providers.module';
 import { FindUserByIdUseCase } from '@application/useCases/findUserById/FindUserByIdUseCase';
 import { UpdateUserUseCase } from '@application/useCases/updateUser/UpdateUserUseCase';
+import { DeleteUserUseCase } from '@application/useCases/deleteUser/DeleteUserUseCase';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { UpdateUserUseCase } from '@application/useCases/updateUser/UpdateUserUs
     FindAllUsersUseCase,
     FindUserByIdUseCase,
     UpdateUserUseCase,
+    DeleteUserUseCase,
     UserResolver,
   ],
 })

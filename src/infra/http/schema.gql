@@ -20,6 +20,7 @@ input FindUserByIdDto {
 
 type Mutation {
   create(createUserDto: CreateUserDto!): User!
+  delete(findUserByIdDto: FindUserByIdDto!): Boolean!
   update(findUserByIdDto: FindUserByIdDto!, updateUserDto: UpdateUserDto!): User!
 }
 

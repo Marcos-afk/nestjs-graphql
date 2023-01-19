@@ -3,6 +3,7 @@ import { FindUserByIdDto } from '@application/dtos/find-user-by-id.dto';
 import { UpdateUserDto } from '@application/dtos/update-user.dto';
 import { User } from '@application/entities/user.entity';
 import { CreateUserUseCase } from '@application/useCases/createUser/CreateUserUseCase';
+import { DeleteUserUseCase } from '@application/useCases/deleteUser/DeleteUserUseCase';
 import { FindAllUsersUseCase } from '@application/useCases/findAllUsers/FindAllUsersUseCase';
 import { FindUserByIdUseCase } from '@application/useCases/findUserById/FindUserByIdUseCase';
 import { UpdateUserUseCase } from '@application/useCases/updateUser/UpdateUserUseCase';
@@ -15,6 +16,7 @@ export class UserResolver {
     private readonly findAllUsersUseCase: FindAllUsersUseCase,
     private readonly findUserByIdUseCase: FindUserByIdUseCase,
     private readonly updateUserUseCase: UpdateUserUseCase,
+    private readonly deleteUserUseCase: DeleteUserUseCase,
   ) {}
 
   @Query(() => [User])
@@ -38,5 +40,10 @@ export class UserResolver {
     @Args('updateUserDto') updateUserDto: UpdateUserDto,
   ) {
     return await this.updateUserUseCase.execute(findUserByIdDto, updateUserDto);
+  }
+
+  @Mutation(() => Boolean)
+  async delete(@Args('findUserByIdDto') findUserByIdDto: FindUserByIdDto) {
+    return await this.deleteUserUseCase.execute(findUserByIdDto);
   }
 }
