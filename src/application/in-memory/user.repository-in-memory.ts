@@ -1,4 +1,4 @@
-/*import { CreateUserDto } from '@application/dtos/create-user.dto';
+import { CreateUserDto } from '@application/dtos/create-user.dto';
 import { User } from '@application/entities/user.entity';
 import { UserRepository } from '@application/repositories/user.repository';
 
@@ -19,15 +19,29 @@ export class UserRepositoryInMemory implements UserRepository {
     return user ? user : null;
   }
 
-  async create(createUserDto: CreateUserDto): Promise<User> {
+  async create({ name, email, password }: CreateUserDto): Promise<User> {
     const user = new User();
     Object.assign(user, {
-      
+      name,
+      email,
+      password,
+      created_at: new Date(),
+      updated_at: new Date(),
     });
+
+    this.users.push(user);
+    return user;
   }
 
-  async update(user: User): Promise<User> {}
+  async update(user: User): Promise<User> {
+    const index = this.users.findIndex((u) => u.id === user.id);
+    this.users[index] = user;
+    return user;
+  }
 
-  async remove(user: User): Promise<void> {}
+  async remove(user: User): Promise<void> {
+    const index = this.users.findIndex((u) => u.id === user.id);
+    this.users.splice(index, 1);
+    return;
+  }
 }
-*/

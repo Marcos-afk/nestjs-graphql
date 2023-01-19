@@ -14,6 +14,10 @@ const config: Config = {
   collectCoverageFrom: ['**/*.(t|j)s'],
   coverageDirectory: '../coverage',
   testEnvironment: 'node',
+  maxConcurrency: 3,
+  maxWorkers: '50%',
+  clearMocks: true,
+  bail: true,
 };
 
 export default config;
